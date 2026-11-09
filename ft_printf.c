@@ -6,7 +6,7 @@
 /*   By: ayelkadi <ayelkadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 13:28:24 by ayelkadi          #+#    #+#             */
-/*   Updated: 2026/11/09 16:56:03 by ayelkadi         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:30:45 by ayelkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,27 @@ int ft_print_nbr(int n)
 	}
 	return(count);
 }
+
+int ft_print_unbr(unsigned int n)
+{
+	char c;
+	int count;
+
+	count = 0;
+	
+	if (n <= 9)
+	{
+		c = (n + '0');
+		write(1,&c,1);
+		count ++;
+	}
+	else
+	{
+		count = count + ft_print_unbr(n / 10);
+		count = count + ft_print_unbr(n% 10);
+	}
+	return(count);
+}
   
 int ft_printf(const char *pr, ...)
 {
@@ -80,13 +101,18 @@ int ft_printf(const char *pr, ...)
 				compt = compt + ft_print_nbr(va_arg(args,int));
     			i++; 
 			}
-			else if(pr[i + 1] == 'u'|| pr[i + 1] == 'x'|| pr[i + 1] == 'X')
+			else if(pr[i + 1] == 'X'|| pr[i + 1] == 'x' )  
 			{
-				
+			
 			}
 			else if(pr[i + 1] == 'p')
 			{
 				
+			}
+			else if(pr[i + 1] == 'u')
+			{
+				compt = compt + ft_print_unbr(va_arg(args, unsigned int));
+    			i++;	
 			}
 			else if(pr[i + 1] == 'c')
 			{

@@ -16,7 +16,8 @@
   int ft_print_str(char *s)
 {
     int j;
-	
+	if (s == NULL)
+    	s = "(null)";
 	j = 0;
 	
 	while(s[j])
@@ -75,12 +76,91 @@ int ft_print_unbr(unsigned int n)
 	}
 	return(count);
 }
-  
+
+int ft_print_hex(unsigned int n)
+{
+	char c;
+	char *hex;
+	int count;
+
+	count = 0;
+	hex = "0123456789abcdef";
+	
+	if (n <= 15)
+	{
+		c = hex[n];
+		write(1,&c,1);
+		count ++;
+	}
+	else
+	{
+		count = count + ft_print_hex(n / 16);
+		count = count + ft_print_hex(n % 16);
+	}
+	return(count);
+}
+int ft_print_hex_maj(unsigned int n)
+{
+	char c;
+	char *hex;
+	int count;
+
+	count = 0;
+	hex = "0123456789ABCDEF";
+	
+	if (n <= 15)
+	{
+		c = hex[n];
+		write(1,&c,1);
+		count ++;
+	}
+	else
+	{
+		count = count + ft_print_hex_maj(n / 16);
+		count = count + ft_print_hex_maj(n % 16);
+	}
+	return(count);
+}
+
+int ft_print_hex_void(unsigned long n)
+{
+	char c;
+	char *hex;
+	int count;
+
+	count = 0;
+	hex = "0123456789abcdef";
+	
+
+	if (n <= 15)
+	{
+		c = hex[n];
+		write(1,&c,1);
+		count ++;
+	}
+	else
+	{
+		count = count + ft_print_hex_void(n / 16);
+		count = count + ft_print_hex_void(n % 16);
+	}
+	return(count);
+}
+
+int	ft_print_char(int c)
+{
+	char	ch;
+
+	ch = c;
+	write(1, &ch, 1);
+	return (1);
+}
+
 int ft_printf(const char *pr, ...)
 {
 	int i;
 	int compt;
 	va_list args;
+	unsigned long onearg;
 	char c;
 	
 	i = 0;
@@ -93,6 +173,7 @@ int ft_printf(const char *pr, ...)
 		{
 			if(pr[i + 1] == 's')
 			{
+
 				compt = compt + ft_print_str(va_arg(args, char *));
     			i++; 
 			}
@@ -101,14 +182,33 @@ int ft_printf(const char *pr, ...)
 				compt = compt + ft_print_nbr(va_arg(args,int));
     			i++; 
 			}
-			else if(pr[i + 1] == 'X'|| pr[i + 1] == 'x' )  
+			else if(pr[i + 1] == 'x')  
 			{
-			
+				compt = compt + ft_print_hex(va_arg(args,unsigned int));
+    			i++; 
+			}
+			else if(pr[i + 1] == 'X')
+			{
+				compt = compt + ft_print_hex_maj(va_arg(args,unsigned int));
+    			i++; 	
 			}
 			else if(pr[i + 1] == 'p')
 			{
-				
+				onearg = va_arg(args,unsigned  long);
+				if( onearg== 0)
+				{
+					compt = compt + ft_print_str("(nil)");
+				}
+				else
+				{
+					write(1, "0", 1);
+					write(1, "x", 1);
+					compt = compt + 2;
+					compt = compt + ft_print_hex_void(onearg);
+				}
+				i++;
 			}
+			
 			else if(pr[i + 1] == 'u')
 			{
 				compt = compt + ft_print_unbr(va_arg(args, unsigned int));

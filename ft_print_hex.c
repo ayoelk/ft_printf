@@ -6,10 +6,11 @@
 /*   By: ayelkadi <ayelkadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 09:44:10 by ayelkadi          #+#    #+#             */
-/*   Updated: 2026/11/10 09:45:49 by ayelkadi         ###   ########.fr       */
+/*   Updated: 2026/11/10 09:51:52 by ayelkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h" 
 
 int ft_print_hex(unsigned int n)
 {
@@ -80,11 +81,4 @@ int ft_print_hex_void(unsigned long n)
 	return(count);
 }
 
-int	ft_print_char(int c)
-{
-	char	ch;
 
-	ch = c;
-	write(1, &ch, 1);
-	return (1);
-}

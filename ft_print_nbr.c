@@ -6,7 +6,7 @@
 /*   By: ayelkadi <ayelkadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 09:44:13 by ayelkadi          #+#    #+#             */
-/*   Updated: 2026/11/10 09:45:58 by ayelkadi         ###   ########.fr       */
+/*   Updated: 2026/11/10 09:51:55 by ayelkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,12 @@ int ft_print_unbr(unsigned int n)
 		count = count + ft_print_unbr(n% 10);
 	}
 	return(count);
+}
+int	ft_print_char(int c)
+{
+	char	ch;
+
+	ch = c;
+	write(1, &ch, 1);
+	return (1);
 }

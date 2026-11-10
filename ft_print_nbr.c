@@ -6,75 +6,75 @@
 /*   By: ayelkadi <ayelkadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 09:44:13 by ayelkadi          #+#    #+#             */
-/*   Updated: 2026/11/10 09:51:55 by ayelkadi         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:38:34 by ayelkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_str(char *s)
+int	ft_print_str(char *s)
 {
-    int j;
+	int	j;
+
 	if (s == NULL)
-    	s = "(null)";
+		s = "(null)";
 	j = 0;
-	
-	while(s[j])
+	while (s[j])
 	{
-		write(1,&s[j],1);
+		write(1, &s[j], 1);
 		j++;
 	}
-	return(j);
+	return (j);
 }
 
-int ft_print_nbr(int n)
+int	ft_print_nbr(int n)
 {
 	long int	res;
-	char c;
-	int count;
+	char		c;
+	int			count;
 
 	count = 0;
 	res = n;
 	if (res < 0)
 	{
-		write(1,"-",1);
+		write(1, "-", 1);
 		res = -res;
-		count ++;
+		count++;
 	}
 	if (res <= 9)
 	{
 		c = (res + '0');
-		write(1,&c,1);
-		count ++;
+		write(1, &c, 1);
+		count++;
 	}
 	else
 	{
 		count = count + ft_print_nbr(res / 10);
 		count = count + ft_print_nbr(res % 10);
 	}
-	return(count);
+	return (count);
 }
 
-int ft_print_unbr(unsigned int n)
+int	ft_print_unbr(unsigned int n)
 {
-	char c;
-	int count;
+	char	c;
+	int		count;
 
 	count = 0;
-	
 	if (n <= 9)
 	{
 		c = (n + '0');
-		write(1,&c,1);
-		count ++;
+		write(1, &c, 1);
+		count++;
 	}
 	else
 	{
 		count = count + ft_print_unbr(n / 10);
-		count = count + ft_print_unbr(n% 10);
+		count = count + ft_print_unbr(n % 10);
 	}
-	return(count);
+	return (count);
 }
+
 int	ft_print_char(int c)
 {
 	char	ch;

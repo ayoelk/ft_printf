@@ -6,14 +6,13 @@
 /*   By: ayelkadi <ayelkadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 13:28:24 by ayelkadi          #+#    #+#             */
-/*   Updated: 2026/11/10 10:14:53 by ayelkadi         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:40:40 by ayelkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-  # include <stdarg.h>    
-  # include <unistd.h> 
-  #include "ft_printf.h" 
-  
+#include <unistd.h>
+#include "ft_printf.h"
+
 int	ft_format(const char c, va_list args)
 {
 	int	count;
@@ -38,20 +37,18 @@ int	ft_format(const char c, va_list args)
 	return (count);
 }
 
-int ft_printf(const char *pr, ...)
+int	ft_printf(const char *pr, ...)
 {
-	int i;
-	int count;
-	va_list args;
+	int		i;
+	int		count;
+	va_list	args;
 
-	
 	i = 0;
 	count = 0;
 	va_start(args, pr);
-	while(pr[i])
+	while (pr[i])
 	{
-		
-		if(pr[i] == '%')
+		if (pr[i] == '%')
 		{
 			count = count + ft_format(pr[i + 1], args);
 			i++;

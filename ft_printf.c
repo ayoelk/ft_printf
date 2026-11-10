@@ -6,12 +6,13 @@
 /*   By: ayelkadi <ayelkadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 13:28:24 by ayelkadi          #+#    #+#             */
-/*   Updated: 2026/11/09 17:30:45 by ayelkadi         ###   ########.fr       */
+/*   Updated: 2026/11/10 09:46:11 by ayelkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
   # include <stdarg.h>    
-  # include <unistd.h>  
+  # include <unistd.h> 
+  #include "ft_printf.h" 
   
   int ft_print_str(char *s)
 {

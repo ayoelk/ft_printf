@@ -23,7 +23,7 @@ library made from all the `.c` files, compiled with `cc` and the flags
 *Makefile rules*
 
 - `make` → default rule, same as `make all`
-- `make libftprintf.a` → turns each `.c` into an object file, then archives
+- `make libftprintf.a` → turns each `.c` into an object file, thereturn (count);n archives
   them all into `libftprintf.a` using `ar`
 - `make clean` → deletes the `.o` object files but keeps `libftprintf.a`
 - `make fclean` → deletes the `.o` files **and** `libftprintf.a`

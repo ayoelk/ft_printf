@@ -6,7 +6,7 @@
 /*   By: ayelkadi <ayelkadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 09:44:10 by ayelkadi          #+#    #+#             */
-/*   Updated: 2026/11/10 10:16:20 by ayelkadi         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:18:54 by ayelkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,10 @@ int	ft_print_ptr(unsigned long n)
 {
 	int	count;
 
-	si n == 0 : return (ft_print_str("(nil)"));
-	afficher "0x"  → count = 2
+	if (n == 0)
+		return (ft_print_str("(nil)"));
+	write(1, "0x", 2);
+	count = 2;
 	count = count + ft_print_hex_void(n);
 	return (count);
 }

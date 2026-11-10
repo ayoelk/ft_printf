@@ -6,7 +6,7 @@
 /*   By: ayelkadi <ayelkadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 13:28:24 by ayelkadi          #+#    #+#             */
-/*   Updated: 2026/11/10 10:40:40 by ayelkadi         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:50:23 by ayelkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_printf(const char *pr, ...)
 	int		i;
 	int		count;
 	va_list	args;
-
+	
 	i = 0;
 	count = 0;
 	va_start(args, pr);
